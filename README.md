@@ -7,7 +7,7 @@
 
 ### Preview
 
-<img src="https://raw.githubusercontent.com/midnai/reign-challenge/main/preview.png" width="200"/>
+<img src="https://raw.githubusercontent.com/midnai/reign-challenge/main/preview.png" width="450"/>
 
 ### Docker commands
 
