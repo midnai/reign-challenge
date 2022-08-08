@@ -1,0 +1,89 @@
+$base-spacing: 15px;
+$base-spacing-lg: 30px;
+$base-font-size: 14px;
+
+$primary-color: #ff742b;
+$black-color: #000000;
+
+// Utilities
+
+.u-flex {
+  display: flex;
+}
+.u-align-items-center {
+  align-items: center;
+}
+
+// Component
+
+.container {
+  width: calc(85% - 10px);
+  margin: 0 auto;
+}
+
+.c-header {
+  display: flex;
+  align-items: center;
+  background: $primary-color;
+  height: auto;
+  padding: 4px;
+  position: relative;
+  justify-content: space-between;
+  color: $black-color;
+}
+
+.c-header-intro {
+  padding: 30px $base-spacing;
+  h1 {
+    font-size: 45px;
+    line-height: 1;
+    padding: 0 0 20px 0;
+  }
+
+  h4 {
+    font-size: 20px;
+    line-height: 1;
+  }
+}
+
+.c-news-container {
+  padding: $base-spacing;
+  background-color: #f6f6ef;
+  min-height: calc(100vh - 98px);
+  color: #5c5c5c;
+  font-size: $base-font-size;
+}
+
+.c-list-group-item {
+  width: 100%;
+  padding: $base-spacing 0;
+  border-bottom: 1px solid #d0d0d0;
+  a {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: $black-color;
+  }
+  &:hover {
+    background: #fafaf7;
+  }
+}
+
+.c-item-title {
+  padding-right: $base-spacing;
+}
+
+.c-item-author {
+  color: #828282;
+}
+
+.c-item-time {
+  padding: 0 $base-spacing-lg;
+  white-space: nowrap;
+}
+
+.c-item-icon {
+  padding: 8px 6px;
+}

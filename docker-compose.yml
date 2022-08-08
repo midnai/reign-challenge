@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  server:
+    container_name: server_c
+    build:
+      dockerfile: Dockerfile
+      context: ./server
+      target: reignchallenge
+    volumes:
+      - ./server:/reign/src/server
+      - /reign/src/server/node_modules/
+    # RUN in debug mode: npm run start:debug --> Also start your vscode debugger
+    # Run in dev mode: npm run start:dev
+    command: yarn start:debug
+    depends_on:
+      - mongodb
+    environment:
+      DATABASE_URL: mongodb://reignuserRoot:s3cr3TRoot@mongodb_c:27017/reigndb?authSource=admin
+      NODE_ENV: development
+      PORT: 3000
+    ports:
+      - 3000:3000
+      - 9229:9229
+
+  client:
+    container_name: client_c
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+      target: reignchallenge
+    command: yarn start
+    volumes:
+      - ./client:/reign/src/client
+      - /reign/src/client/node_modules
+    ports:
+      - 4200:4200
+    links:
+      - server
+
+  mongodb:
+    image: mongo:5.0
+    container_name: mongodb_c
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb-data:/data/db
+      - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh
+    environment:
+      - MONGO_INITDB_DATABASE=reigndb
+      - MONGO_INITDB_ROOT_USERNAME=reignuserRoot
+      - MONGO_INITDB_ROOT_PASSWORD=s3cr3TRoot
+      - MONGO_INITDB_USERNAME=reignuser
+      - MONGO_INITDB_PASSWORD=s3cr3T
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+volumes:
+  mongodb-data:

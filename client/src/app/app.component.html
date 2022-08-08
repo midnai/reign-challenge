@@ -1,0 +1,36 @@
+<div class="container">
+  <header class="c-header">
+    <div class="c-header-intro">
+      <h1>HN Feed</h1>
+      <h4>We <3 Hacker News!</h4>
+    </div>
+  </header>
+
+  <section class="c-news-container">
+    <ul class="c-list-group">
+      <ng-template
+        ngFor
+        [ngForOf]="articles$ | async"
+        let-article
+        let-i="index"
+      >
+        <li class="c-list-group-item">
+          <a href="{{ article.url }}" target="_blank">
+            <div class="u-flex">
+              <span class="c-item-title">{{ article.title }}</span>
+              <span class="c-item-author">- {{ article.author }} -</span>
+            </div>
+            <div class="u-flex u-align-items-center">
+              <span class="c-item-time">
+                {{ humanizeDate(article.published_date) }}
+              </span>
+              <a href="#" class="c-item-icon" (click)="removeArticle(article)">
+                <fa-icon [icon]="faTrashCan"></fa-icon
+              ></a>
+            </div>
+          </a>
+        </li>
+      </ng-template>
+    </ul>
+  </section>
+</div>

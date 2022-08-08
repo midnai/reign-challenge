@@ -1,0 +1,5 @@
+# Ignore all HTML files:
+*.scss
+*.sass
+*.css
+*.env
