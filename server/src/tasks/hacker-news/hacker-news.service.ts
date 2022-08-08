@@ -13,8 +13,7 @@ export class HackerNewsService {
     private readonly articlesService: ArticlesService
   ) {}
 
-  // @Cron(CronExpression.EVERY_HOUR)
-  @Cron(CronExpression.EVERY_10_SECONDS)
+  @Cron(CronExpression.EVERY_HOUR)
   async handleCron() {
     this.logger.debug('calling hacker-news api each hour...');
 
