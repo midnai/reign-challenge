@@ -5,6 +5,10 @@
 - Client test coverage 100%
 - Server test coverage 30%
 
+### Preview
+
+<img src="https://raw.githubusercontent.com/midnai/reign-challenge/main/preview.png" width="200"/>
+
 ### Docker commands
 
 Command to build:
